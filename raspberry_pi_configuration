@@ -1,0 +1,81 @@
+Instructions  (2020.09.02 10:30)
+
+These instructions are for the 20.04 LTS version of Ubuntu on Raspberry Pi.
+When using the Raspberry Pi imager, you can select the image to write.  
+Or, download the image from Ubuntu and write it to the SD card using your choice of imager.
+
+####################################################
+Download Ubuntu for Pi
+https://ubuntu.com/download/raspberry-pi
+
+Image the SD card (>8GB)
+Some imagers.  Pi imager: preferred
+Raspberry Pi imager: https://www.raspberrypi.org/downloads/
+BalenaEtcher: https://www.balena.io/etcher/
+
+####################################################
+# IMPORTANT NOTE #
+# The username and password for ubuntu 20.04 is ubuntu/ubuntu
+# The first time your raspberry pi boots into Ubuntu, it takes some time before you can login
+# There is apparently an 'invisible' initialization process that takes place to create the user
+# You may need to wait 5-10 minutes before thes user/pw functions.
+# I experienced this at least 3-5 times. 
+# If you try to login before this completes, it acts the same as if you put in the "wrong passsword"
+# and prompts you again to login
+# You will be prompted to change password on first login
+####################################################
+
+# Setup your Raspberry Pi.
+# The Ubuntu installer automatically installs cloud services.  
+# I do not plug the Pi into the network at first boot so I can disable these services 
+# prior to putting it on the network
+
+sudo systemctl disable cloud--init
+sudo systemctl disable cloud--init-local
+sudo systemctl disable cloud-final.service
+sudo systemctl disable cloud-config.service
+sudo reboot
+
+# plug into network 
+# ssh into pi if you prefer
+####################################################
+# Note: I prefer to open htop in another terminal to see process activity
+
+sudo apt update
+sudo apt upgrade -y
+sudo apt-get install python3-dev python3-pip virtualenv
+sudo apt-get install -y build-essential libssl-dev libffi-dev
+
+# These are already installed typically, but verify, use nano if you prefer it
+sudo apt install vi ftp
+
+# OpenCanary start does not look in /home/ubuntu for file.  
+# Run install as root for simplicity of setup
+sudo -i
+
+# create the python virtual environment
+virtualenv env/
+pip3 install --upgrade 'setuptools<45.0.0'
+# this could take awhile
+pip3 install testresources launchpadlib rdpy
+ . env/bin/activate
+pip3 install opencanary
+
+opencanaryd --copyconfig
+
+# file location when run as root
+sudo vi /root/.opencanary.conf
+
+# test your setup before making changes to the configuration file
+opencanaryd --dev
+# CTRL-C to quit
+
+See this guide to setup email
+https://opencanary.readthedocs.io/en/latest/alerts/email.html
+
+opencanaryd --start
+
+####################################################
+
+The startup automatic script instructions are pending.
+
