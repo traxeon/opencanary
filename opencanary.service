@@ -4,8 +4,7 @@ After=multi-user.target network.target
 
 [Service]
 Type=idle
-Environment=/root/env/
-ExecStart=/usr/bin/python3 /root/env/bin/opencanaryd --start
+ExecStart=/root/env/bin/opencanaryd --start
 KillMode=process
 Restart=on-failure
 
