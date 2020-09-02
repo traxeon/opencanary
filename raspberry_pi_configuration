@@ -49,6 +49,17 @@ sudo apt-get install -y build-essential libssl-dev libffi-dev
 # These are already installed typically, but verify, use nano if you prefer it
 sudo apt install vi ftp
 
+
+# The Samba OpenCanary module monitors a log file produced by the Samba full_audit VFS module. Setup relies on:
+#   Reference: https://github.com/thinkst/opencanary
+#   Having Samba installed.
+#   A modified Samba config file, to write file events to syslog's LOCAL7 facility.
+#   A modified syslog file, to output LOCAL7 to a samba-audit.log file.
+
+# See example smb.conf.canary file
+# Update and copy to /etc/samba/smb.conf
+sudo apt install samba
+
 # OpenCanary start does not look in /home/ubuntu for file.  
 # Run install as root for simplicity of setup
 sudo -i
