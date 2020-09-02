@@ -60,6 +60,8 @@ sudo apt install vi ftp
 # Update and copy to /etc/samba/smb.conf
 sudo apt install samba
 
+mkdir /home/ubuntu/files
+
 # OpenCanary start does not look in /home/ubuntu for file.  
 # Run install as root for simplicity of setup
 sudo -i
@@ -76,6 +78,11 @@ opencanaryd --copyconfig
 
 # file location when run as root
 sudo vi /root/.opencanary.conf
+
+# create samba logging services for opencanary
+# create /etc/rsyslog.conf.d/75-samba.conf
+$FileCreateMode 0644
+local7.*            /var/log/samba-audit.log
 
 # test your setup before making changes to the configuration file
 opencanaryd --dev
