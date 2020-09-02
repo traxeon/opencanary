@@ -4,6 +4,8 @@ These instructions are for the 20.04 LTS version of Ubuntu on Raspberry Pi.
 When using the Raspberry Pi imager, you can select the image to write.  
 Or, download the image from Ubuntu and write it to the SD card using your choice of imager.
 
+# Samba options are a work in progress. Skip them if you do not want to troubleshoot them.
+
 ####################################################
 Download Ubuntu for Pi
 https://ubuntu.com/download/raspberry-pi
