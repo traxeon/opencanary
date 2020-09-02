@@ -25,6 +25,7 @@
        unix password sync = no
        map to guest = bad user
        usershare allow guests = yes
+       interfaces = eth0
 
 [NetShare1]
        comment = Network_File_Share_One
