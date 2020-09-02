@@ -77,5 +77,13 @@ opencanaryd --start
 
 ####################################################
 
-The startup automatic script instructions are pending.
+Startup Script
+
+# Copy the opencanary.service file to /etc/systemd/system/opencanary.service
+sudo systemctl daemon-reload 
+sudo reboot
+
+# verify running
+sudo systemctl status opencanary.service 
+ps -ef | grep opencanary
 
