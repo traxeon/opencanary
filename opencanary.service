@@ -5,6 +5,7 @@ After=multi-user.target network.target
 [Service]
 Type=idle
 ExecStart=/root/env/bin/opencanaryd --start
+ExecStop=/root/env/bin/opencanaryd --stop
 KillMode=process
 Restart=on-failure
 
