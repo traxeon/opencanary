@@ -1,0 +1,14 @@
+[Unit]
+Description=OpenCanary Service
+After=multi-user.target network.target
+
+[Service]
+Type=idle
+Environment=/root/env/
+ExecStart=/usr/bin/python3 /root/env/bin/opencanaryd --start
+KillMode=process
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+Alias=opencanary.service
