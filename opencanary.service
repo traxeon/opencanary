@@ -1,9 +1,10 @@
 [Unit]
-Description=OpenCanary Service
-After=multi-user.target network.target
+Description=OpenCanary_Service
+After=multi-user.target
 
 [Service]
 Type=idle
+PIDFile = /root/env/bin/opencanaryd.pid
 ExecStart=/root/env/bin/opencanaryd --start
 ExecStop=/root/env/bin/opencanaryd --stop
 KillMode=process
