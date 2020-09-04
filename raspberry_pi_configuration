@@ -11,9 +11,10 @@ Download Ubuntu for Pi
 https://ubuntu.com/download/raspberry-pi
 
 Image the SD card (>8GB)
-Some imagers.  Pi imager: preferred
-Raspberry Pi imager: https://www.raspberrypi.org/downloads/
-BalenaEtcher: https://www.balena.io/etcher/
+Some imagers.  GDU: preferred
+* Gnome Disk Utility (Restore Image)
+* Raspberry Pi imager: https://www.raspberrypi.org/downloads/
+* BalenaEtcher: https://www.balena.io/etcher/
 
 ####################################################
 # IMPORTANT NOTE #
