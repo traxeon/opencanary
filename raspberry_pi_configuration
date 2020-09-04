@@ -71,8 +71,9 @@ sudo -i
 
 # create the python virtual environment
 virtualenv env/
-pip3 install testresources launchpadlib rdpy
 pip3 install --upgrade 'setuptools<45.0.0'
+
+pip3 install testresources launchpadlib rdpy
 # this could take awhile
  . env/bin/activate
 pip3 install opencanary
